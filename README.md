@@ -45,3 +45,4 @@ npm run dev
 6. **Роли** — Host назначает Controller (управление) или Viewer (только просмотр)
 
 
+

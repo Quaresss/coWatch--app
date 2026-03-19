@@ -5,9 +5,13 @@ import { Server } from 'socket.io'
 const app = express()
 const httpServer = createServer(app)
 
+const corsOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(',').map((o) => o.trim())
+  : ['http://localhost:5173', 'http://127.0.0.1:5173']
+
 const io = new Server(httpServer, {
   cors: {
-    origin: process.env.NODE_ENV === 'production' ? false : ['http://localhost:5173', 'http://127.0.0.1:5173'],
+    origin: corsOrigins,
     methods: ['GET', 'POST'],
   },
 })
